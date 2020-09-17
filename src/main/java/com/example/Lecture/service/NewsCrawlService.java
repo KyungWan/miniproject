@@ -97,7 +97,7 @@ public class NewsCrawlService {
         daumNews(document.select("li>span>a.tit"), category);
         daumNews(document.select("div.topNews.tableB>div.txtB>a.tit"), category);
         daumNews(document.select("div.box_contents>ul.listW.first>li.imgB>span>a.tit"), category);
-//        daumNews(document.select(""), category);
+        daumNews(document.select("div.box_contents>ul.listW.first>li>span>a.tit"), category);
 //        daumNews(document.select(""), category);
 //        daumNews(document.select(""), category);
 //        daumNews(document.select(""), category);
