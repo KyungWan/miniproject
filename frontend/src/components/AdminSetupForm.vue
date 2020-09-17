@@ -1,26 +1,15 @@
 <template>
-  <form @submit.prevent="submit">
-    <table>
-    <!-- 회원 가입 -->
-      <tr>
-        <td>User ID : </td>
-        <td><input type="text" v-model="userId"></td>
-      </tr>
-      <tr>
-        <td>Password : </td>
-        <td><input type="password" v-model="userPw"></td>
-      </tr>
-      <tr>
-        <td>Nick Name : </td>
-        <td><input type="text" v-model="userName"></td>
-      </tr>
-    </table>
+  <div class="SignUp">
+    <form @submit.prevent="submit">
+      <!-- 회원 가입   Sign Up-->
+      <input type="text" placeholder="userId" v-model="userId"><br>
+      <input type="password" placeholder="userPw" v-model="userPw"><br>
+      <input type="text" placeholder="userName" v-model="userName"><br>
 
-    <!-- 회원 가입 등록 버튼 -->
-    <div>
-      <button type="submit">등록</button>
-    </div>
-  </form>
+      <!-- 회원 가입 등록 버튼 -->
+      <button type="submit"><p style="border-style: groove">등록</p></button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -42,3 +31,25 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .SignUp {
+    margin-top: 10px;
+  }
+  input {
+    margin: 10px 0;
+    width: 30%;
+    padding: 15px;
+  }
+  button {
+    margin-top: 20px;
+    width: 10%;
+    cursor: pointer;
+  }
+  .border-styles > p{
+    margin: 2px 0;
+    padding: 1px 3px;
+    border-width: 2px;
+    border-color: #aaa;
+  }
+</style>

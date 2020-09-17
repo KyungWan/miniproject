@@ -29,7 +29,7 @@
       </button>
       <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
         대기 화면
-      </router-link>
+      </router-link><br>
       <router-link :to="{ name: 'About' }" class="nav-link" active-class="active">
         About Us
       </router-link>

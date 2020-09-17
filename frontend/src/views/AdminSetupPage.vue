@@ -1,8 +1,11 @@
 <template>
+  <v-container fluid>
+    <v-img src="@/assets/SingUp.png" max-height="300px"></v-img>
   <div align="center">
-    <h2>회원가입 등록 페이지</h2>
+    <h2>회원가입</h2>
     <admin-setup-form @submit="onSubmit"/>
   </div>
+  </v-container>
 </template>
 
 <script>

@@ -1,8 +1,11 @@
 <template>
+  <v-container fluid>
+    <v-img src="@/assets/Login.png" max-height="350px"></v-img>
   <div align="center">
     <h2>Login</h2>
     <login-form @submit="onSubmit"/>
   </div>
+  </v-container>
 </template>
 
 <script>
