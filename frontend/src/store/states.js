@@ -7,5 +7,8 @@ export default {
   news: [],
   homeNews: [],
   savedNews: [],
-  savedNewsContents: []
+  savedNewsContents: [],
+  // Vue Board
+  boards: [],
+  board: null
 }

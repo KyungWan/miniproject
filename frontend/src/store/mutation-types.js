@@ -10,3 +10,7 @@ export const CRAWLSTART = 'CRAWLSTART'
 export const FINDONE = 'FINDONE'
 export const FINDHOME = 'FINDHOME'
 export const BOOLEAN = 'BOOLEAN'
+
+// for board
+export const FETCH_BOARD_LIST = 'FETCH_BOARD_LIST'
+export const FETCH_BOARD = 'FETCH_BOARD'
