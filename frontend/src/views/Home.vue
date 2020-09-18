@@ -30,9 +30,6 @@
       <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
         대기 화면
       </router-link><br>
-      <router-link :to="{ name: 'About' }" class="nav-link" active-class="active">
-        About Us
-      </router-link>
       </v-container>
     </div>
   </div>
@@ -40,7 +37,6 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 /* eslint-disable no-unused-vars */
 import store from '../store'
 import Vue from 'vue'
