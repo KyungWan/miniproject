@@ -65,7 +65,7 @@
     >
       <v-spacer></v-spacer>
       <!-- 아래 쪽 글씨 부분 -->
-      <span>&copy; 살려줘...</span>
+      <span>&copy; 페이지 네이션,개인 회원가입, db검색</span>
     </v-footer>
   </v-app>
 </template>

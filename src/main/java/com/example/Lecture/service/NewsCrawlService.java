@@ -10,7 +10,6 @@ import lombok.extern.java.Log;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -70,6 +69,7 @@ public class NewsCrawlService {
         document = connectUrl("http://finance.daum.net/");
 
         Elements total = document.select("strong.tit_thumb>a.link_txt");
+//        Elements total = document.select("strong.tit_timenews>a.link_txt");
         Elements image = document.select("div.thumb>a>img.fullWidth");
 
         HomeNews homeNews = null;
@@ -91,6 +91,7 @@ public class NewsCrawlService {
 
         newsRepository.deleteAll();
 
+//        daumNews(document.select("div#cMain>div#mArticle>div.box_timenews>ul.list_timenews>li>strong.tit_timenews>a.link_txt"), category);
         daumNews(document.select("div.topNews>div.imgB.f_clear>div.txtB>a.tit"), category);
         daumNews(document.select("div.newsB>div.box_contents>div>ul.list>li>a"), category);
         daumNews(document.select("div.halfB>ul.fl>li>a"), category);
