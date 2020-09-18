@@ -8,7 +8,7 @@
         <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
           대기 화면
         </router-link>
-        <router-link :to="{ name: 'Stock' }" class="nav-link" active-class="active" style="padding: 50px;">
+        <router-link :to="{ name: 'Stock' }" class="nav-link" active-class="active" style="padding: 40px;">
           주식 정보 게시판
         </router-link>
         <button id="login" @click="onClickLogout">Logout</button>

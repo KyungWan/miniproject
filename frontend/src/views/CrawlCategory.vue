@@ -10,7 +10,7 @@
 
       <v-btn @click="start('exchange')" text color="black" style="padding: 10px; width: 90px;">환율</v-btn>
 
-      <v-btn @click="start('talks')" text color="black" style="padding: 10px; width: 90px;">토론</v-btn>
+      <v-btn @click="start('talks')" text color="black" style="padding: 10px; width: 90px;">게시판</v-btn>
 
     </template>
     <template #content>

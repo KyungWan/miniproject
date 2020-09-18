@@ -42,21 +42,10 @@
       <v-list dense>
         <v-list-item @click.stop="left = !left">
           <v-list-item-action>
-            <div>>>></div>
+            <div> >>> </div>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click="suggest">추천 정보 보기</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-
-      <v-list dense>
-        <v-list-item @click.stop="left = !left">
-          <v-list-item-action>
-            <v-icon>mdi-exit-to-app</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title @click="category">살려줘...</v-list-item-title>
+            <v-list-item-title @click="recommend">추천 정보 보기</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -97,11 +86,9 @@ export default {
     category () {
       (window.location.pathname !== '/Stock') ? router.push('/Stock') : router.go(0)
     },
-    suggest () {
-      (window.location.pathname !== '/suggestednews/list') ? router.push('/suggestednews/list') : router.go(0)
-    },
-    savednews () {
-      (window.location.pathname !== '/savednews/list') ? router.push('/savednews/list') : router.go(0)
+    // recommend (추천 하는 창 만들기)
+    recommend () {
+      (window.location.pathname !== '/recommend/list') ? router.push('/recommend/list') : router.go(0)
     }
   }
 }
