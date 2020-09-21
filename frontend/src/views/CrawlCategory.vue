@@ -34,6 +34,24 @@
               </div>
             </div>
           </tbody>
+      <!-- 검색창 ---------------------------------------->
+        <div class="row" style="clear:right;width:500px;margin:auto">
+          <div class="col-lg-12">
+            <form id="searchForm" action="Stock" method="get">
+              <select name="type">
+                <option value="">전체보기</option>
+                <option value="T">제목</option>
+                <option value="C">내용</option>
+                <option value="TC">제목과 내용</option>
+              </select>
+              <input type="text" name="keyword" placeholder="검색" />
+              <input type="hidden" name="pageNum" placeholder="pageNum">
+              <input type="hidden" name="amount" placeholder="amount">
+              <button class="btn btn-primary btn-sm">Search</button>
+            </form>
+          </div>
+        </div>
+      <!-- 검색창 -->
         </template>
       </v-simple-table>
     </template>
