@@ -13,9 +13,6 @@
     </template>
     <template #content>
     <!-- 게시판 -->
-    <v-container fluid>
-      <v-img src="@/assets/homeG.png" max-height="70px"></v-img>
-    </v-container>
       <v-simple-table>
         <template v-slot:default>
           <thead>
@@ -31,6 +28,11 @@
               <td style="color: gray">{{ list.newsNo }}</td>
               <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td>
             </tr>
+            <div class="card text-center m-3">
+              <div class="card-footer pb-0 pt-3">
+                <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+              </div>
+            </div>
           </tbody>
         </template>
       </v-simple-table>
@@ -38,9 +40,23 @@
   </Layout>
 </template>
 
+<!--
+<div class="card text-center m-3">
+  <div class="card-body">
+    <div v-for="item in pageOfItems" :key="item.id">{{item.name}}</div>
+  </div>
+ <div class="card-footer pb-0 pt-3">
+   <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+ </div>
+</div>
+-->
+
 <script>
 import Layout from '../components/Layout'
 import { mapState } from 'vuex'
+
+// an example array of items to be paged
+const exampleItems = [...Array(150).keys()].map(i => ({ id: (i + 1), name: 'Item ' + (i + 1) }))
 
 export default {
   components: { Layout },
@@ -56,7 +72,70 @@ export default {
     },
     start (category) {
       this.$store.dispatch('crawlFind', category)
+    },
+    onChangePage (pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems
+    }
+  },
+  data () {
+    return {
+      exampleItems,
+      pageOfItems: []
     }
   }
 }
 </script>
+
+<style>
+body {
+  font-family: Helvetica Neue, Arial, sans-serif;
+  font-size: 14px;
+  color: #444;
+}
+
+table {
+  border: 2px solid #42b983;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+th {
+  background-color: #42b983;
+  color: rgba(255, 255, 255, 0.66);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -user-select: none;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+th,
+td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+
+#search {
+  margin-bottom: 10px;
+}
+
+#page-navigation {
+  display: flex;
+  margin-top: 5px;
+}
+
+#page-navigation p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#page-navigation button {
+  background-color: #42b983;
+  border-color: #42b983;
+  color: rgba(255, 255, 255, 0.66);
+}
+</style>

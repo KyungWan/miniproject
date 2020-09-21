@@ -6,6 +6,10 @@ import cookies from 'vue-cookies'
 import vuex from 'vuex'
 import vuetify from './plugins/vuetify'
 
+// register jw pagination component globally
+import JwPagination from 'jw-vue-pagination'
+Vue.component('jw-pagination', JwPagination)
+
 Vue.config.productionTip = false
 
 Vue.use(cookies)
