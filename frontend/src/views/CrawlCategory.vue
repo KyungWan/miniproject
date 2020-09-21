@@ -2,9 +2,9 @@
   <Layout>
     <template #menubar>
     <!-- 메뉴[툴바] -->
-      <v-btn @click="start('domestic')" text color="black" style="padding: 10px; width: 90px;">국내</v-btn>
+      <v-btn @click="start('economic')" text color="black" style="padding: 10px; width: 90px;">국내 경제</v-btn>
 
-      <v-btn @click="start('global')" text color="black" style="padding: 10px; width: 90px;">해외</v-btn>
+      <v-btn @click="start('foreign')" text color="black" style="padding: 10px; width: 90px;">해외 소식</v-btn>
 
       <v-btn @click="start('news#economy')" text color="black" style="padding: 10px; width: 90px;">뉴스</v-btn>
 
@@ -28,12 +28,15 @@
               <td style="color: gray">{{ list.newsNo }}</td>
               <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td>
             </tr>
-            <div class="card text-center m-3">
-              <div class="card-footer pb-0 pt-3">
-                <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
-              </div>
-            </div>
           </tbody>
+        </template>
+      </v-simple-table>
+        <!-- pagination -->
+        <div class="card text-center m-3">
+          <div class="card-footer pb-0 pt-3">
+            <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+          </div>
+        </div>
       <!-- 검색창 ---------------------------------------->
         <div class="row" style="clear:right;width:500px;margin:auto">
           <div class="col-lg-12">
@@ -52,8 +55,6 @@
           </div>
         </div>
       <!-- 검색창 ---------------------------------------->
-        </template>
-      </v-simple-table>
     </template>
   </Layout>
 </template>

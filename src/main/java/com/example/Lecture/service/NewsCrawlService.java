@@ -66,11 +66,10 @@ public class NewsCrawlService {
         log.info("crawlingHome()");
 
         homeNewsRepository.deleteAll();
-        document = connectUrl("http://finance.daum.net/");
+        document = connectUrl("https://news.daum.net/");
 
         Elements total = document.select("strong.tit_thumb>a.link_txt");
-//        Elements total = document.select("strong.tit_timenews>a.link_txt");
-        Elements image = document.select("div.thumb>a>img.fullWidth");
+        Elements image = document.select("div.item_issue>a.link_thumb>img.thumb_g");
 
         HomeNews homeNews = null;
 
@@ -87,18 +86,20 @@ public class NewsCrawlService {
     public void mainCrawler(String category) {
         log.info("mainCrawler(): " + category);
 
-        document = connectUrl("http://finance.daum.net/" + category);
-
+        document = connectUrl("https://news.daum.net/" + category);
         newsRepository.deleteAll();
 
-//        daumNews(document.select("div#cMain>div#mArticle>div.box_timenews>ul.list_timenews>li>strong.tit_timenews>a.link_txt"), category);
-        daumNews(document.select("div.topNews>div.imgB.f_clear>div.txtB>a.tit"), category);
-        daumNews(document.select("div.newsB>div.box_contents>div>ul.list>li>a"), category);
-        daumNews(document.select("div.halfB>ul.fl>li>a"), category);
-        daumNews(document.select("li>span>a.tit"), category);
-        daumNews(document.select("div.topNews.tableB>div.txtB>a.tit"), category);
-        daumNews(document.select("div.box_contents>ul.listW.first>li.imgB>span>a.tit"), category);
-        daumNews(document.select("div.box_contents>ul.listW.first>li>span>a.tit"), category);
+        daumNews(document.select("div.item_mainnews>div.cont_thumb>strong.tit_thumb>a"), category);
+        daumNews(document.select("ul.item_mainnews>li>div.cont_thumb>strong.tit_thumb>a"), category);
+        daumNews(document.select("strong.tit_mainnews>a"), category);
+        daumNews(document.select("ul.list_issue>li>a.link_txt"), category);
+//        daumNews(document.select("div.topNews>div.imgB.f_clear>div.txtB>a.tit"), category);
+//        daumNews(document.select("div.newsB>div.box_contents>div>ul.list>li>a"), category);
+//        daumNews(document.select("div.halfB>ul.fl>li>a"), category);
+//        daumNews(document.select("li>span>a.tit"), category);
+//        daumNews(document.select("div.topNews.tableB>div.txtB>a.tit"), category);
+//        daumNews(document.select("div.box_contents>ul.listW.first>li.imgB>span>a.tit"), category);
+//        daumNews(document.select("div.box_contents>ul.listW.first>li>span>a.tit"), category);
 //        daumNews(document.select(""), category);
 //        daumNews(document.select(""), category);
 //        daumNews(document.select(""), category);
