@@ -122,20 +122,4 @@ td {
 #search {
   margin-bottom: 10px;
 }
-
-#page-navigation {
-  display: flex;
-  margin-top: 5px;
-}
-
-#page-navigation p {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#page-navigation button {
-  background-color: #42b983;
-  border-color: #42b983;
-  color: rgba(255, 255, 255, 0.66);
-}
 </style>
