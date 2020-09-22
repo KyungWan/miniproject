@@ -8,7 +8,7 @@
     >
     <!-- 타이틀 -->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title><div @click="home">주식 정보 게시판</div></v-toolbar-title>
+      <v-toolbar-title><div @click="home">경제 정보 게시판</div></v-toolbar-title>
       <v-spacer></v-spacer>
       <slot name="menubar"></slot>
     </v-app-bar>
@@ -65,7 +65,7 @@
     >
       <v-spacer></v-spacer>
       <!-- 아래 쪽 글씨 부분 -->
-      <span>&copy; 페이지 네이션 연동,개인 회원가입, 검색 기능 연동, (가능하면) 뉴스 링크 연결하기</span>
+      <span>&copy; 개인 회원가입 </span>
     </v-footer>
   </v-app>
 </template>
