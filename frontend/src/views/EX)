@@ -1,3 +1,10 @@
+ <!-- 크롤링 한 값을 가져옴 [클릭할 때 작동] -->
+  <tr v-for="list of lists" :key="list.title">
+    <td style="color: gray">{{ list.newsNo }}</td>
+    <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td>
+  </tr>
+
+
 // an example array of items to be paged
 const exampleItems = [...Array(150).keys()].map(i => ({ id: (i + 1), name: 'Item ' + (i + 1) }))
 
