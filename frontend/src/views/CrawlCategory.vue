@@ -21,7 +21,7 @@
                       :items-per-page="5"
                       :search="search">
          <template #item.title="{ item }">
-            <a :href="item.address">{{ item.title }}</a>
+            <a :href="item.address" target=_blank>{{ item.title }}</a>
          </template>
         </v-data-table>
       </v-container>
