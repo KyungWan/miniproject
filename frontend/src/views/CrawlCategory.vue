@@ -13,71 +13,35 @@
     </template>
     <template #content>
     <!-- 게시판 -->
-      <v-simple-table>
-        <template v-slot:default>
-          <thead>
-            <tr>
-            <!-- 목록 -->
-              <th class="text-left">No.</th>
-              <th class="text-left">제목</th>
-            </tr>
-          </thead>
-          <!-- 크롤링 한 값을 가져옴 [클릭할 때 작동] -->
-          <tbody>
-            <tr v-for="list of lists" :key="list.title">
-              <td style="color: gray">{{ list.newsNo }}</td>
-              <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
-        <!-- pagination -->
-        <div class="card text-center m-3">
-          <div class="card-footer pb-0 pt-3">
-            <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
-          </div>
-        </div>
-      <!-- 검색창 ---------------------------------------->
-        <div class="row" style="clear:right;width:500px;margin:auto">
-          <div class="col-lg-12">
-            <form id="searchForm" action="Stock" method="get">
-              <select name="type">
-                <option value="">전체보기</option>
-                <option value="T">제목</option>
-                <option value="C">내용</option>
-                <option value="TC">제목과 내용</option>
-              </select>
-              <input type="text" name="keyword" placeholder="검색" />
-              <input type="hidden" name="pageNum" placeholder="pageNum">
-              <input type="hidden" name="amount" placeholder="amount">
-              <button class="btn btn-primary btn-sm"><p style="border-style: groove">Search</p></button>
-            </form>
-          </div>
-        </div>
-      <!-- 검색창 ---------------------------------------->
+    <v-container>
+      <v-text-field v-model="search" single-line></v-text-field>
+        <v-data-table style="width: auto"
+                      :headers="headers"
+                      :items="lists"
+                      :items-per-page="5"
+                      :search="search">
+         <template #item.title="{ item }">
+            <a :href="item.address">{{ item.title }}</a>
+         </template>
+        </v-data-table>
+      </v-container>
     </template>
   </Layout>
 </template>
-
-<!--
-<div class="card text-center m-3">
-  <div class="card-body">
-    <div v-for="item in pageOfItems" :key="item.id">{{item.name}}</div>
-  </div>
- <div class="card-footer pb-0 pt-3">
-   <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
- </div>
-</div>
--->
 
 <script>
 import Layout from '../components/Layout'
 import { mapState } from 'vuex'
 
-// an example array of items to be paged
-const exampleItems = [...Array(150).keys()].map(i => ({ id: (i + 1), name: 'Item ' + (i + 1) }))
-
 export default {
+  name: 'App',
+  data: () => ({
+    search: '',
+    headers: [
+      { text: 'No.', value: 'newsNo' },
+      { text: '제목', value: 'title' }
+    ]
+  }),
   components: { Layout },
   computed: {
     ...mapState({
@@ -91,16 +55,6 @@ export default {
     },
     start (category) {
       this.$store.dispatch('crawlFind', category)
-    },
-    onChangePage (pageOfItems) {
-      // update page of items
-      this.pageOfItems = pageOfItems
-    }
-  },
-  data () {
-    return {
-      exampleItems,
-      pageOfItems: []
     }
   }
 }

@@ -65,7 +65,7 @@
     >
       <v-spacer></v-spacer>
       <!-- 아래 쪽 글씨 부분 -->
-      <span>&copy; 페이지 네이션,개인 회원가입, db검색, 뉴스 링크 연하기</span>
+      <span>&copy; 페이지 네이션 연동,개인 회원가입, 검색 기능 연동, (가능하면) 뉴스 링크 연결하기</span>
     </v-footer>
   </v-app>
 </template>

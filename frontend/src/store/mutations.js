@@ -20,6 +20,7 @@ export default {
     state.board = board
   },
   [CRAWLSTART] (state, payload) {
+    console.log(payload)
     state.lists = payload
   },
   [FINDONE] (state, payload) {
