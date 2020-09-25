@@ -6,15 +6,15 @@
 
       <v-btn @click="start('foreign')" text color="black" style="padding: 10px; width: 90px;">해외 소식</v-btn>
 
-      <v-btn @click="start('news#economy')" text color="black" style="padding: 10px; width: 90px;">뉴스</v-btn>
+      <!-- <v-btn @click="start('news#economy')" text color="black" style="padding: 10px; width: 90px;">뉴스</v-btn>
 
-      <v-btn @click="start('exchange')" text color="black" style="padding: 10px; width: 90px;">환율</v-btn>
+      <v-btn @click="start('exchange')" text color="black" style="padding: 10px; width: 90px;">환율</v-btn> -->
 
     </template>
     <template #content>
     <!-- 게시판 -->
     <v-container>
-      <v-text-field v-model="search" single-line></v-text-field>
+      <v-text-field v-model="search" placeholder="search" single-line></v-text-field>
         <v-data-table style="width: auto"
                       :headers="headers"
                       :items="lists"
