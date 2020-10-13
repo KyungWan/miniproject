@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
 
-// For Login System
-import LoginPage from '../views/LoginPage.vue'
-import AdminSetupPage from '../views/AdminSetupPage.vue'
-
-// For Crawling
-import CrawlCategory from '../views/CrawlCategory.vue'
+import analysis from '../views/analysis.vue'
+import recommendation from '../views/recommendation.vue'
 
 Vue.use(VueRouter)
 
@@ -18,25 +15,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/LoginPage',
-    name: 'LoginPage',
-    components: {
-      default: LoginPage
-    }
+    path: '/analysis',
+    name: 'analysis',
+    component: analysis
   },
   {
-    path: '/AdminSetupPage',
-    name: 'AdminSetupPage',
-    components: {
-      default: AdminSetupPage
-    }
-  },
-  {
-    path: '/Stock',
-    name: 'Stock',
-    components: {
-      default: CrawlCategory
-    }
+    path: '/recommendation',
+    name: 'recommendation',
+    component: recommendation
   }
 ]
 
