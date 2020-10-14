@@ -1,89 +1,101 @@
 <template>
-  <Layout>
-    <template #content>
-    <!-- 파일 이름 길이 자르기 = truncate-length
-         줄 밑부분 정보 표시 = counter
-         파일 크기 표시 = show size -->
-    <v-container>
-        <v-file-input
-          chips
-          counter
-          show-size
-          outlined
-          truncate-length="50"
-          placeholder="Please upload music files."
-        >
-        </v-file-input>
+  <div class="home">
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+    <div id="header" v-if="isAuthorized">
+      <v-container fluid>
+        <v-img src="@/assets/homeG.png" max-height="700px"></v-img>
+      <!-- 로그인 후 화면 -->
+        <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
+          대기 화면
+        </router-link>
+        <router-link :to="{ name: 'Stock' }" class="nav-link" active-class="active" style="padding: 40px;">
+          정보 게시판
+        </router-link>
+        <button id="login" @click="onClickLogout">Logout</button>
       </v-container>
-
-      <div align="center">
-        <v-btn outlined next to="/analysis" color="gray"
-               style="padding: auto width: auto">
-          분석 결과 보기
-        </v-btn>
+      <div>
+        <br><span>{{ myinfo.auth }}님 접속을 환영합니다.</span>
       </div>
-    </template>
-  </Layout>
+    </div>
+    <!-- 로그인 전 화면  -->
+    <div id="header" v-else>
+      <v-container fluid>
+        <v-img src="@/assets/C.png" max-height="400px"></v-img>
+      <button id="login" @click="$router.push('AdminSetupPage')">
+        회원가입
+      </button><br><br>
+      <button id="login" @click="$router.push('LoginPage')">
+        로그인
+      </button>
+      <router-link :to="{ name: 'Home' }" class="nav-link" active-class="active">
+        대기 화면
+      </router-link><br>
+      </v-container>
+    </div>
+  </div>
 </template>
 
 <script>
-import Layout from '../components/Layout'
-import { mapGetters } from 'vuex'
-
 // @ is an alias to /src
 /* eslint-disable no-unused-vars */
 import store from '../store'
 import Vue from 'vue'
-import router from '../router'
+// import cookies from 'vue-cookies'
+
+import { mapState, mapGetters, mapActions } from 'vuex'
+
+// Vue.use(cookies)
 
 export default {
-  components: { Layout },
-  methods: {
-    Success () {
-      (window.location.pathname !== '/Music') ? router.push('/Music') : router.go(0)
+  name: 'Home',
+  data: function () {
+    return {
+      message: 'Vue Test Message'
     }
   },
+  methods: {
+    onClickLogout () {
+      this.logout()
+      alert('Success Logout')
+      this.$router.push({ name: 'Home' })
+    },
+    ...mapActions(['logout'])
+  },
   computed: {
+    ...mapState(['myinfo']),
     ...mapGetters(['isAuthorized'])
+  },
+  components: {
   }
 }
 </script>
 
-<style>
-  .border-styles > p{
-    margin: 2px 0;
-    padding: 1px 3px;
-    border-width: 2px;
-    border-color: #aaa;
-  }
-  body {
-    font-family: Helvetica Neue, Arial, sans-serif;
-    font-size: 14px;
-    color: #444;
-  }
+<style scoped>
+div {
+  border: 1px solid #ccc;
+}
 
-  table {
-    border: 2px solid #42b983;
-    border-radius: 3px;
-    background-color: #fff;
-  }
+#header {
+  //padding: 15px;
+  //margin-bottom: 15px;
+  //margin: 5px 5px;
+}
 
-  th {
-    background-color: #42b983;
-    color: rgba(255, 255, 255, 0.66);
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -user-select: none;
-  }
+img {
+  width: auto;
+  height: auto;
+  max-width: 1000px;
+  max-height: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  td {
-    background-color: #f9f9f9;
-  }
+#login {
+  background-color: #77aadd;
+  color: #ffffff;
+  font-weight: bold;
+  float: right;
+}
 
-  th,
-  td {
-    min-width: 120px;
-    padding: 10px 20px;
-  }
 </style>
